@@ -2,11 +2,27 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<title>PSBT.io -- IFTTT Bitcoin transaction broadcasting</title>
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+		<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 		<meta name="viewport" content="width=device-width" />
 		%sveltekit.head%
 	</head>
-	<body data-sveltekit-preload-data="hover">
+	<body data-sveltekit-preload-data="hover" class="min-h-screen text-gray-700 dark:text-white bg-white dark:bg-black">
 		<div style="display: contents">%sveltekit.body%</div>
+
+		<footer class="
+			bg-slate-100 dark:bg-purple-1000
+			flex flex-row items-center justify-center 
+			text-gray-500 dark:text-white
+			p-5 mt-5">
+			<div>
+				Built for
+				<img src="https://abs.twimg.com/hashflags/Bitcoin_evergreen/Bitcoin_evergreen.png" style="width: 1.2em; vertical-align: -20%; margin-right: 0.075em; height: 1.2em; margin-left: 2px; display: inline-block;">
+				by
+				<a href="https://pablof7z.com" class="font-mono">@pablof7z</a>
+			</div>
+		</footer>
 	</body>
 </html>
