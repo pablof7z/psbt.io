@@ -24,7 +24,7 @@
         </p>
 
         <p class="px-8 md:px-0 text-2xl mt-5 text-gray-600 font-sans font-extralight">
-            Send bitcoin tansactions when certain conditions have been met.
+            Send bitcoin transactions when certain conditions have been met.
         </p>
     </div>
 
