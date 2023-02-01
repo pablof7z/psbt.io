@@ -11,12 +11,9 @@
 
     import NostrChat from "$lib/components/nostr-widget.svelte";
 
-    /** @type {import('./$types').ActionData} */ 
-    export let form;
-
     let conditions = {}
     let tx;
-    const mainnetPrice = 1;
+    const mainnetPrice = 1971;
     let broadcastPrice = mainnetPrice;
     let invoice;
     let network;
