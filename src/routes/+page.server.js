@@ -1,4 +1,5 @@
 import { sequelize, Transaction } from '$lib/server/db'
+import { redirect } from '@sveltejs/kit';
 
 /** @type {import('./$types').Actions} */
 export const actions = {
@@ -15,8 +16,6 @@ export const actions = {
             conditions
         });
 
-        console.log(tx);
-
-        return JSON.stringify(tx);
+        throw redirect(301, `/${tx.id}`);
     }
 };

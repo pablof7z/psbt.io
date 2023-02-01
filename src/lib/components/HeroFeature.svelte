@@ -1,4 +1,5 @@
-<div class="bg-dark-blue-900
+<div class="
+    bg-dark-blue-900
     p-4 xl:p-8
     px-4 md:px-6 2xl:px-8
     leading-loose text-xl md:rounded-lg font-sans text-white">
