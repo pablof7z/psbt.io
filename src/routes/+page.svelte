@@ -13,7 +13,8 @@
 
     let conditions = {}
     let tx;
-    const mainnetPrice = 1971;
+    const possiblePrices = [1492, 1913, 1933, 1944, 1971, 2016];
+    const mainnetPrice = possiblePrices[Math.floor(Math.random() * possiblePrices.length)];
     let broadcastPrice = mainnetPrice;
     let invoice;
     let network;
