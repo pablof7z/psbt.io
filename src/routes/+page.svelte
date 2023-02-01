@@ -165,8 +165,6 @@
 
 <NavBar></NavBar>
 
-{JSON.stringify(form)}
-
 <form action="?/save" method="post">
     <input type="hidden" name="conditions" value="{JSON.stringify(conditions)}">
 
