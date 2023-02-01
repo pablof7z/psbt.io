@@ -14,7 +14,7 @@ export async function createInvoice(amount) {
 
     const newInvoice = await wallet.createInvoice({
         amount: amount,
-        memo: 'test',
+        memo: 'psbt.io',
         out: false,
     });
 
