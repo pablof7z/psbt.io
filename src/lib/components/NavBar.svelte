@@ -9,7 +9,7 @@
                     </g>
                 </svg>
             </div>
-            <a href="#" class="font-mono" on:click|preventDefault={()=>{alert('not ready yet')}}>TOR Site</a>
+            <a href="https://hqhad32sdqagshsmc7auhisbjglf3aod3o7qpe56x33ak56tfwr2upad.onion" class="font-mono">TOR Site</a>
         </div>
     </div>
 </div>
