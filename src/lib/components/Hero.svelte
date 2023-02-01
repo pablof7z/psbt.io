@@ -9,9 +9,8 @@
     2xl:mx-auto" style="min-height: 70vh;">
     <div class="
         md:px-4
-        mb-10
-        lg:mb-0
         lg:w-3/5
+        my-16 lg:my-0
         ">
         <p class="
             px-8 md:px-0
@@ -23,8 +22,8 @@
             transaction broadcasting
         </p>
 
-        <p class="px-8 md:px-0 text-2xl mt-5 text-gray-600 font-sans font-extralight">
-            Send bitcoin transactions when certain conditions have been met.
+        <p class="px-8 md:px-0 text-2xl mt-5 text-gray-600 font-sans font-normal lg:font-extralight">
+            Send bitcoin transactions when certain conditions are met.
         </p>
     </div>
 

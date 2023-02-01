@@ -1,6 +1,6 @@
 <script>
     import NavBar from '../lib/components/NavBar.svelte';
-    import { createInvoice, checkInvoiceStatus, formatSatoshis } from '$lib/utils.js';
+    import { createInvoice, checkInvoiceStatus, formatSatoshis, chooseRandomNumberFrom } from '$lib/utils.js';
     import { invoiceStatus } from '$lib/store.js';
 
     import Hero from "$lib/components/Hero.svelte";
@@ -14,7 +14,7 @@
     let conditions = {}
     let tx;
     const possiblePrices = [1492, 1913, 1933, 1944, 1971, 2016];
-    const mainnetPrice = possiblePrices[Math.floor(Math.random() * possiblePrices.length)];
+    const mainnetPrice = chooseRandomNumberFrom(possiblePrices);
     let broadcastPrice = mainnetPrice;
     let invoice;
     let network;

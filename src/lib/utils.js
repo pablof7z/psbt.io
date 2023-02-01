@@ -50,3 +50,7 @@ export function formatSatoshis(sats, {tryThousands} = {}) {
 
     return `${v}${tryThousands?'k':''} sats`;
 }
+
+export function chooseRandomNumberFrom(array) {
+    return array[Math.floor(Math.random() * array.length)];
+}
