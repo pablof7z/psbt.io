@@ -484,4 +484,4 @@
 </div>
 
 
-<!-- <NostrChat /> -->
+<NostrChat />
