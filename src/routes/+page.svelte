@@ -7,7 +7,6 @@
     import ConditionalCard from "$lib/components/ConditionalCard.svelte";
     import {onMount} from 'svelte';
     import QR from 'svelte-qr';
-    
 
     import NostrChat from "$lib/components/nostr-widget.svelte";
 
@@ -38,16 +37,19 @@
         }
     }
 
+    
     onMount(async () => {
-        invoice = await createInvoice(broadcastPrice);
+        if (!!window && window.location.origin === 'https://psbt.io') {
+            invoice = await createInvoice(broadcastPrice);
 
-        checkInterval = setInterval(checkInvoiceForPayment, 2500);
+            checkInterval = setInterval(checkInvoiceForPayment, 2500);
 
-        invoiceStatus.subscribe(async (value) => {
-            if (invoice && value === 'check') {
-                await checkInvoiceForPayment();
-            }
-        });
+            invoiceStatus.subscribe(async (value) => {
+                if (invoice && value === 'check') {
+                    await checkInvoiceForPayment();
+                }
+            });
+        }
     })
 
     function onDateSet(event) {

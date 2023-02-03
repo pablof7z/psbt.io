@@ -48,8 +48,6 @@ class NstrAdapter {
             }
         }
 
-        console.log(event);
-        
         event.id = getEventHash(event)
         const signedEvent = await this.signEvent(event)
         this.subscribeToEventAndResponses(signedEvent.id);
@@ -152,7 +150,7 @@ class NstrAdapter {
         this.#relay = relayInit('wss://relay.f7z.io')
         this.#relay.connect()
         this.#relay.on('connect', () => {
-            console.log(`connected to ${this.#relay.url}`)
+            console.log(`connected to ${this.#relay.url}`, new Date())
             this.#setRelayConnected()
         })
 
@@ -168,7 +166,7 @@ class NstrAdapter {
         })
 
         this.#relay.on('disconnect', (r) => {
-            console.log('disconnected')
+            console.log('disconnected ' + new Date())
             setTimeout(() => {
                 this.#relay.connect()
             }, 1000);

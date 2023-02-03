@@ -36,6 +36,10 @@
                 </p>
 
                 <p class="text-gray-700 mb-3">
+                    Choose how you would like to chat:
+                </p>
+
+                <p class="text-gray-700 mb-3">
                     You can use it to ask for help
                     <span class="font-bold">PSBT.io</span>
                     to the creators of this site or to

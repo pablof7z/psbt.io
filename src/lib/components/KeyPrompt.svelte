@@ -3,6 +3,7 @@
     import QR from 'svelte-qr';
     import { chatAdapter } from '$lib/store';
     import NstrAdapterExtension from '$lib/components/nstrchat/adapters/extension.js';
+    import NstrAdapterNostrConnect from '$lib/components/nstrchat/adapters/nostr-connect.js';
 
     let hasNostrExtension = false;
     let publicKey = null;
@@ -10,32 +11,57 @@
 
     onMount(() => {
         hasNostrExtension = true;//!!window.nostr;
+
+        const type = localStorage.getItem('nostrichat-type');
+
+        if (type === 'extension') {
+            useExtension();
+        } else if (type === 'nostr-connect') {
+            useNostrConnect();
+        }
     });
 
     function useExtension() {
         window.nostr.getPublicKey().then((pubkey) => {
+            localStorage.setItem('nostrichat-type', 'extension');
             chatAdapter.set(new NstrAdapterExtension(pubkey))
         });
     }
 
     import { generatePrivateKey, getPublicKey } from 'nostr-tools';
-
-    const sk = '09a52d9bfc0540ddab76354e7658f7f08ac383e1ac730f3be9636ad71d74c636'; //generatePrivateKey();
-
     import { Connect, ConnectURI } from '@nostr-connect/connect';
 
     async function useNostrConnect() {
-        const connect = new Connect({ secretKey: sk, relay: 'wss://nostr.vulpem.com' });
+        let key = localStorage.getItem('nostrichat-nostr-connect-key');
+        let publicKey = localStorage.getItem('nostrichat-nostr-connect-public-key');
+
+        if (key) {
+            chatAdapter.set(new NstrAdapterNostrConnect(publicKey, key))
+            return;
+        }
+
+        key = generatePrivateKey();
+
+        const connect = new Connect({ secretKey: key, relay: 'wss://nostr.vulpem.com' });
         connect.events.on('connect', (connectedPubKey) => {
+            localStorage.setItem('nostrichat-nostr-connect-key', key);
+            localStorage.setItem('nostrichat-nostr-connect-public-key', connectedPubKey);
+            localStorage.setItem('nostrichat-type', 'nostr-connect');
+            
+            console.log('connected to nostr connect relay')
             publicKey = connectedPubKey;
+            chatAdapter.set(new NstrAdapterNostrConnect(publicKey, key))
             nostrConnectURI = null;
         });
+        connect.events.on('disconnect', () => {
+            console.log('disconnected from nostr connect relay')
+        })
         await connect.init();
 
         const connectURI = new ConnectURI({
-        target: getPublicKey(sk),
-        relay: 'wss://nostr.vulpem.com',
-        metadata: {
+            target: getPublicKey(key),
+            relay: 'wss://nostr.vulpem.com',
+            metadata: {
                 name: 'PSBT.io',
                 description: '🔉🔉🔉',
                 url: 'https://psbt.io',
@@ -117,9 +143,6 @@
             text-gray-200
         " on:click|preventDefault={useNostrConnect}>
             Nostr Connect
-            <span class="text-xs text-gray-400">
-                (WIP)
-            </span>
         </button>
 
         <button class="
