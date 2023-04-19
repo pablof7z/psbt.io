@@ -249,7 +249,7 @@
                     <ConditionalCard isEnabled={hasOnFeeRate} onSet={onFeeRateSet} onReset={unsetOnFeeRate} title="On avg. Fee Rate:">
                         <select id="feeRateDirection" name="feeRateDirection" class="mt-1 block w-full rounded-md dark:bg-slate-900 dark:border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 md:text-lg">
                             <option>sats/vByte is &gt;=</option>
-                            <option>sats/vByte is &lt;=></option>
+                            <option>sats/vByte is &lt;=</option>
                         </select>
 
                         <input placeholder="sats per vByte (e.g. 10)" type="number" name="avgFee" step="any" class="w-full bg-transparent border-gray-900 dark:border-gray-300 resize-none border rounded my-3 p-3 font-mono" on:change={onFeeRateSet} />
